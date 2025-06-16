@@ -45,7 +45,7 @@ void loop() { // A function to leave this part of the coed running forever.
     digitalWrite(yellowWire, LOW);
   }
 
-  delay(200); // This will delay the loop 500 miliseconds so that the sensor can keep up with any movements and remain stable with the distances of objects.
+  delay(200); // This will delay the loop 200 miliseconds so that the sensor can keep up with any movements and remain stable with the distances of objects.
 
   }
 
