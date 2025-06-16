@@ -1,0 +1,53 @@
+# Project-1
+#1 project code.
+// #Engineering #EngineeringStudent #EngineeringProject #physics #learnontiktok #tech #arduino #STEM #diy
+// Feel free to message me on Instagram or TikTok if you have any questions or run into any issues @M4r.24
+
+//Variables to let the computer reconize and know which color wire I have in the Ardunio pins. 
+const int orangeWire = 9;
+const int whiteWire = 10;
+const int yellowWire = 3; 
+
+long duration; // Variable to track the duration it took the ultrasonic wave to hit the object and have the object return the wave.
+int distance; // Variable to track the distance of an object from the sensor.
+
+void setup() { // A function that runs when the Breadboard is turned on or reset.
+
+  Serial.begin(9600); // Declaring the speed of my USB that is connecting this code to the Ardunio. Which is 9600 bits per second.
+
+  pinMode(orangeWire, OUTPUT); // OUPUTS a signal to the sensor to produce ultrasonic waves.
+  pinMode(whiteWire, INPUT); // INPUTS to the Ardunio via electrical signal if any ultrasonic waves were bounced onto the sensor from any detections.
+  pinMode(yellowWire, OUTPUT); // OUTPUTS to the yellow wire when to turn the LED ON and OFF depending on the ultrasonic waves bounces from detected objects.
+
+}
+
+void loop() { // A function to leave this part of the coed running forever.
+
+  digitalWrite(orangeWire, LOW); // Sets the voltage to 0.
+  delayMicroseconds(2); // Waits 2 microseconds.
+  digitalWrite(orangeWire, HIGH); // Sends 5 volts to the orange wire.
+  delayMicroseconds(10); // Waits 10 microseconds.
+  digitalWrite(orangeWire, LOW); // Stops the 5 volts.
+
+  duration = pulseIn(whiteWire, HIGH); // Allows the ardunio to read how far the detected object is.
+
+  distance = duration * 0.034 / 2; // Converting time to distance to allow it to be displayed at centimeters.
+
+  // Prints out the exact distance of a detected object in centimemters to the terminal.
+
+  Serial.print("Distance : ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  //The loop that will keep the LED either ON or OFF depending on if an object is 10 centimeters of the sensor.
+  if (distance > 0){
+    digitalWrite(yellowWire, HIGH); 
+    delay(1000);
+  } else {
+    digitalWrite(yellowWire, LOW);
+  }
+
+  delay(200); // This will delay the loop 500 miliseconds so that the sensor can keep up with any movements and remain stable with the distances of objects.
+
+  }
+
