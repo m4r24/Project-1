@@ -37,7 +37,7 @@ void loop() { // A function to leave this part of the coed running forever.
   Serial.print(distance);
   Serial.println(" cm");
 
-  //The loop that will keep the LED either ON or OFF depending on if an object is 10 centimeters of the sensor.
+  //The loop that will keep the LED either ON or OFF depending on if an object is detected within the sensors detections
   if (distance > 0){
     digitalWrite(yellowWire, HIGH); 
     delay(1000);
